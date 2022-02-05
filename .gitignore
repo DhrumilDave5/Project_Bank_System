@@ -6,3 +6,6 @@ __pycache__/
 
 # Ignore Dev files
 Le_Dev/
+
+# Ignore customer details (as they may change after tests)
+customer.txt
