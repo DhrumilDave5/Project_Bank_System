@@ -9,3 +9,6 @@ Le_Dev/
 
 # Ignore customer details (as they may change after tests)
 customer.txt
+
+# Ignore customers' history (as they may change after tests)
+history/
