@@ -1,8 +1,7 @@
 import accountinser
 import accountdel
 import display
-import compound
-import simple
+import interest
 
 print('welcome to kendriya national bank')
 while True:
@@ -19,9 +18,15 @@ while True:
     elif choice == '2':
         accountdel.account_deleter()
     elif choice == '3':
-        compound.compound_interest()
+        p = float(input("Principal Amount: "))
+        r = float(input("Interest Rate (Per Annum): "))
+        t = float(input("Time Period (in years): "))
+        interest.compound(p, r, t)
     elif choice == '4':
-        simple.simple_interest()
+        p = float(input("Principal Amount: "))
+        r = float(input("Interest Rate (Per Annum): "))
+        t = float(input("Time Period (in years): "))
+        interest.simple(p, r, t)
     elif choice == '5':
         display.total_money()
     elif choice == '6':

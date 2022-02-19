@@ -9,7 +9,7 @@ def account_deleter():
     users = []
     deleted = []
     for i in file:
-        user = eval(i[0:-1])
+        user = eval(i[:-1])
         users.append(user)
     for i in users:
         if i[1].lower() == name.lower():

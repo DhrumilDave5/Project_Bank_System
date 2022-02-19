@@ -4,7 +4,7 @@ aadhaar = []
 name_pass = []
 file = open('customer.txt', 'r')
 for i in file:
-    user = eval(i[0:-1])
+    user = eval(i[:-1])
     money_ = user[3]
     aadhaar_ = user[5]
     ele = [user[1].lower(), user[2].lower()]
