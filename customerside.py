@@ -6,8 +6,8 @@ cust_data = []
 
 def withdraw():
     amount = int(input('Enter the money you want to withdraw='))
-    money = cust_data[3]
-    name = 'history\\' + cust_data[1].lower() + cust_data[2].lower() + '.txt'
+    money = cust_data[2]
+    name = 'history\\' + cust_data[0].lower() + cust_data[1].lower() + '.txt'
     if amount > money:
         print("sorry you don't have that much balance in your account")
         print('your current balance is', money, 'rupees')
@@ -22,18 +22,18 @@ def withdraw():
         file.write(text)
         file.flush()
         file.close()
-        cust_data[3] = money
-        file = open('customer.txt', 'r')
+        cust_data[2] = money
+        file = open('customers.txt', 'r')
         users = []
         for i in file:
-            user = eval(i[0:(len(i) - 1)])
+            user = eval(i[:-1])
             users.append(user)
         for i in users:
-            if i[1].lower() == cust_data[1].lower() and i[2].lower() == cust_data[2].lower():
+            if i[0].lower() == cust_data[0].lower() and i[1].lower() == cust_data[1].lower():
                 del i[3]
                 i.insert(3, money)
         file.close()
-        file = open('customer.txt', 'w')
+        file = open('customers.txt', 'w')
         for i in users:
             file.write(str(i) + '\n')
         file.flush()
@@ -53,7 +53,7 @@ def deposit():
     file.flush()
     file.close()
     cust_data[3] = money
-    file = open('customer.txt', 'r')
+    file = open('customers.txt', 'r')
     users = []
     for i in file:
         user = eval(i[0:-1])
@@ -63,7 +63,7 @@ def deposit():
             del i[3]
             i.insert(3, money)
     file.close()
-    file = open('customer.txt', 'w')
+    file = open('customers.txt', 'w')
     for i in users:
         file.write(str(i) + '\n')
     file.flush()
