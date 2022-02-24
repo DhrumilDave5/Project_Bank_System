@@ -74,13 +74,14 @@ def open_account():
         aadhaar_list = [i[4] for i in data.main()]
         if aadhaar not in aadhaar_list:
             names_passwords = [(i[0], i[1]) for i in data.main()]
-            if (username.lower(), password.lower()) not in names_passwords:
+            if (username, password) not in names_passwords:
                 details = [username, password, money, email, aadhaar]
                 file.write(str(details) + "\n")
                 new_file = open("history\\" + username.lower()
                                 + password.lower() + ".txt", 'w')
                 new_file.close()
-                print("Your account is successfully added to the system!")
+                print("Your account is successfully added to the system",
+                      username)
             else:
                 print("An account with the same username and password is"
                       " already registered with our bank")
