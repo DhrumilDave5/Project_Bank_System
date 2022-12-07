@@ -3,17 +3,23 @@ import time
 
 
 def withdraw(data_):
-    amount = int(input("Enter the money you want to withdraw="))
+
+    while True:
+        amount = input("Enter the amount of money you want to withdraw: ")
+        if amount.isnumeric():
+            amount = int(amount)
+            break
+        else:
+            print("Please enter integer value")
+
     money = data_[2]
-    name = "history\\" + data_[0].lower() + data_[1].lower() + ".txt"
-    if amount > money:
-        print("sorry you don't have that much balance in your account")
-        print("your current balance is", money, "rupees")
-    else:
+    if amount <= money:
         time_ = time.asctime()
-        print("you have withdrawn", amount, "rupees from your account on", time_)
+        print("You have withdrawn", amount,
+              "amount of money from your account on", time_)
         print("your current balance now is", money - amount, "rupees")
         money -= amount
+        name = "history\\" + data_[0].lower() + data_[1].lower() + ".txt"
         file = open(name, "a")
         text = "date=" + time_ + "\namount withdrawn=" + str(amount) \
                + "\nbalance left=" + str(money) + "\n\n\n\n"
@@ -35,9 +41,13 @@ def withdraw(data_):
         for i in users:
             file.write(str(i) + "\n")
         file.close()
+    else:
+        print("sorry you don't have that much balance in your account")
+        print("your current balance is", money, "rupees")
 
 
 def deposit(data_):
+
     new = int(input("Enter the amount of money you want to deposit="))
     money = data_[3]
     name = "history\\" + data_[1].lower() + data_[2].lower() + ".txt"
@@ -67,22 +77,23 @@ def deposit(data_):
 
 
 def history(data_):
+
     print("-" * 25, "Transaction history of", data_[0], "-" * 25)
     name = "history\\" + data_[0].lower() + data_[1].lower() + ".txt"
-    file = open(name)
-    for i in file:
-        print(i, end='')
+    with open(name) as file:
+        for i in file:
+            print(i, end="")
 
 
-def login():
+def main():
 
     customer_data = []
     username, password = "", ""
-    while not customer_data:
+    while not (username and password):
         print("Enter username and password of your account to login")
         username = input("Username: ").upper()
         password = input("Password: ").upper()
-        for i in data.main():
+        for i in data.extract():
             if i[0] == username:
                 print("Entered username is registered with our bank")
                 if i[1] == password:
@@ -103,7 +114,7 @@ def login():
               "1) Withdraw money\n"
               "2) Deposit money\n"
               "3) View transaction history\n"
-              "4) Quit\n")
+              "4) Logout & Quit\n")
         choice = input("Enter your choice (from 1-4): ")
         print("\n" + "=" * 75 + "\n")
         if choice == "1":
@@ -119,4 +130,5 @@ def login():
         print("\n" + "=" * 75 + "\n")
 
 
-login()
+if __name__ == "__main__":
+    main()
