@@ -2,4 +2,4 @@
 
 Class 12th Computer Science Project on Bank System
 
-Made By: Rajdeep Bakolia, Arhaan Shaikh, Dhrumil Dave
+Made By: Dhrumil Dave, Rajdeep Bakolia, Arhaan Shaikh

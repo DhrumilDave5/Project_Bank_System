@@ -2,17 +2,16 @@ import data
 
 
 def total_money():
-    print('Application to show total money in the bank.')
-    total = sum(data.money)
-    print('Total money in the bank is', total)
-    return
+    total = 0
+    for i in data.extract():
+        total += i[2]
+    print("Total money in the bank is: ", total)
 
 
-def display():
-    for i in data.data:
-        print('User name', i[1])
-        print('Money in the account=', i[3])
-        print('Email is', i[4])
-        print('Aadhaar number is', i[5])
-        print('\n' * 4)
-    return
+def customers():
+    for i in data.extract():
+        print("User name: ", i[0])
+        print("Money in the account: ", i[2])
+        print("Email: ", i[3])
+        print("Aadhaar number: ", i[4])
+        print("\n")
